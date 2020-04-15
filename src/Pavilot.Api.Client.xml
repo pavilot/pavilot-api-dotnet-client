@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pavilot.Api.Client</name>
+    </assembly>
+    <members>
+        <member name="M:Pavilot.Api.Client.PavilotClient.ImagesAsync(System.String,System.String)">
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.ImagesAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.ProjectsAllAsync">
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.ProjectsAllAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.ProjectsAsync(System.String)">
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.ProjectsAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.AnimationsAsync(System.String)">
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.AnimationsAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.VideosAllAsync(System.String,System.String,System.Nullable{System.Int32})">
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.VideosAllAsync(System.String,System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.VideosAsync(System.String,System.String,System.String)">
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.VideosAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.ExportAsync(System.String,System.String,Pavilot.Api.Client.ExportRequest)">
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.ExportAsync(System.String,System.String,Pavilot.Api.Client.ExportRequest,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.ImageAsync(System.String,System.String,System.IO.Stream)">
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.ImageAsync(System.String,System.String,System.IO.Stream,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="T:Pavilot.Api.Client.IPavilotService">
+            <summary>
+            Pavilot Service
+            Methods for api communication
+            </summary>
+        </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.IsValid">
+            <summary>
+            Validates Pavilot communication configuration.
+            Throws ArgumentException if any of the settings is not valid. 
+            Throws ArgumentNullException if any of the settings is missing.
+            </summary>
+        </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.GetProjectsAsync">
+            <summary>
+            Retrieves all projects
+            </summary>
+        </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.GetAnimationsAsync(System.String)">
+            <summary>
+            Retrieves animations of a project
+            </summary>
+            <param name="projectId">Project Id</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.GetVideosAsync(System.String,System.String,System.Int32)">
+            <summary>
+            Retrieves videos of an animation
+            Order is reversed, page 0 retrieves latest generated videos
+            </summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="page">Page</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.GetVideoAsync(System.String,System.String,System.String)">
+            <summary>
+            Retrieve video to have status details
+            </summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="videoId">Video Id</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.ExportAsync(System.String,System.String,Pavilot.Api.Client.ExportRequest)">
+            <summary>
+            Export a new video with updated data
+            </summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="request">Mappings and distribution details</param>
+        </member>
+        <member name="T:Pavilot.Api.Client.PavilotService">
+            <summary>
+            Pavilot Service
+            </summary>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration">Configuration reference to read settings</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.#ctor(Pavilot.Api.Client.IPavilotSettings)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="settings">Pavilot settings</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.IsValid">
+            <summary>
+            Validates Pavilot communication configuration.
+            Throws ArgumentException if any of the settings is not valid. 
+            Throws ArgumentNullException if any of the settings is missing.
+            </summary>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.GetProjectsAsync">
+            <summary>
+            Retrieves all projects
+            </summary>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.GetAnimationsAsync(System.String)">
+            <summary>
+            Retrieves animations of a project
+            </summary>
+            <param name="projectId">Project Id</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.GetVideosAsync(System.String,System.String,System.Int32)">
+            <summary>
+            Retrieves videos of an animation
+            Order is reversed, page 0 retrieves latest generated videos
+            </summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="page">Page</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.GetVideoAsync(System.String,System.String,System.String)">
+            <summary>
+            Retrieve video to have status details
+            </summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="videoId">Video Id</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.ExportAsync(System.String,System.String,Pavilot.Api.Client.ExportRequest)">
+            <summary>
+            Export a new video with updated data
+            </summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="request">Mappings and distribution details</param>
+        </member>
+        <member name="T:Pavilot.Api.Client.IPavilotSettings">
+            <summary>
+            Pavilot settings interface
+            </summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.IPavilotSettings.ApiEndpoint">
+            <summary>
+            Base url address for api
+            e.g: https://v1.pavilot.com
+            </summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.IPavilotSettings.ApiKey">
+            <summary>
+            Api Subscription Key
+            </summary>
+        </member>
+        <member name="T:Pavilot.Api.Client.PavilotSettings">
+            <summary>
+            Pavilot settings
+            </summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.PavilotSettings.ApiEndpoint">
+            <summary>
+            Base url address for api
+            e.g: https://v1.pavilot.com
+            </summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.PavilotSettings.ApiKey">
+            <summary>
+            Api Subscription Key
+            </summary>
+        </member>
+        <member name="T:Pavilot.Api.Client.StartupExtensions">
+            <summary>
+            Startup Extension for easy integration
+            </summary>
+        </member>
+        <member name="M:Pavilot.Api.Client.StartupExtensions.AddPavilot(Microsoft.Extensions.DependencyInjection.IServiceCollection,Pavilot.Api.Client.PavilotSettings)">
+            <summary>
+            Register PavilotService. Please use IPavilotService 
+            </summary>
+            <param name="services"></param>
+            <param name="settings">Pavilot Settings</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

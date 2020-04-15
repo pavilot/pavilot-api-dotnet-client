@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <Authors>usame.esendir</Authors>
+    <Company>dissperltd</Company>
+    <Product>Pavilot</Product>
+    <Description>Pavilot API .Net Client</Description>
+    <PackageIcon>logo.png</PackageIcon>
+    <RepositoryUrl>https://github.com/pavilot/pavilot-api-dotnet-client</RepositoryUrl>
+    <PackageProjectUrl>https://pavilot.com</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>pavilot</PackageTags>
+    <PackageReleaseNotes>First version of Pavilot API .Net Client</PackageReleaseNotes>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <DocumentationFile>C:\Users\UsameEsendir\Source\Repos\Dissper\Pavilot\pavilot-api-dotnet-client\src\Pavilot.Api.Client.xml</DocumentationFile>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\global\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Pavilot.Api.Client.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

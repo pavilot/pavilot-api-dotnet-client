@@ -1,0 +1,67 @@
+﻿@model PavilotItems
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="text-center">
+                <div class="card border-primary" style="width: 18rem;">
+                    <div class="card-header strong">
+                        Projects
+                    </div>
+                    <ul class="list-group list-group-flush text-primary">
+                        @foreach (var item in Model.Projects)
+                        {
+                            <li class="list-group-item">
+                                @Html.RouteLink(item.Name, new { projectId = item.Id })
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <div class="text-center">
+                <div class="card border-info" style="width: 18rem;">
+                    <div class="card-header">
+                        Animations
+                    </div>
+                    @if (Model.Animations != null)
+                    {<ul class="list-group list-group-flush text-info">
+                            @foreach (var item in Model.Animations)
+                            {
+                                <li class="list-group-item">
+                                    @Html.RouteLink(item.Name, new { projectId = item.ProjectId, animationId = item.Id })
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="text-center">
+                <div class="card border-danger" style="width: 18rem;">
+                    <div class="card-header">
+                        Videos
+                        @if (!string.IsNullOrEmpty(ViewBag.AnimationId))
+                        {
+                            <a type="button" class="btn btn-danger btn-sm float-right" asp-controller="Home" asp-action="NewVideo" asp-route-projectId="@ViewBag.ProjectId" asp-route-animationId="@ViewBag.AnimationId">New</a>
+                        }
+                    </div>
+                    @if (Model.Videos != null)
+                    {
+                        <ul class="list-group list-group-flush text-danger">
+                            @foreach (var item in Model.Videos)
+                            {
+                                <li class="list-group-item">
+                                    <a href="@item.Path">@item.Name - @item.Status</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
