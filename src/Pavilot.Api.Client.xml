@@ -13,6 +13,42 @@
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.HooksAllAsync(System.String)">
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.HooksAllAsync(System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.HooksAsync(System.String,Pavilot.Api.Client.HookRequest)">
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.HooksAsync(System.String,Pavilot.Api.Client.HookRequest,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.Hooks2Async(System.String,System.Int32)">
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.Hooks2Async(System.String,System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.Hooks3Async(System.String,System.Int32)">
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.Hooks3Async(System.String,System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
         <member name="M:Pavilot.Api.Client.PavilotClient.ProjectsAllAsync">
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>

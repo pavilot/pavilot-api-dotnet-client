@@ -6,7 +6,7 @@
 
 This library will help you to easily integrate with Pavilot API and focus on your work
 
-To learn more about pavilot please visit [Pavilot](https://pavilot.com)
+To learn more about Pavilot please visit [pavilot.com](https://pavilot.com)
 
 ## Setup
 

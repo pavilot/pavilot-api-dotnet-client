@@ -55,11 +55,11 @@ namespace Pavilot.Client.Sample.Controllers
                 Name = "Name",
                 Data = new List<Mapping>
                 {
-                    new Mapping
-                    {
-                        Key = "Key",
-                        Value = "Value"
-                    }
+                    //new Mapping
+                    //{
+                    //    Key = "Key",
+                    //    Value = "Value"
+                    //}
                 },
                 Distributions = new List<Distribution>
                 {

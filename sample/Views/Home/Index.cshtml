@@ -54,9 +54,11 @@
                         <ul class="list-group list-group-flush text-danger">
                             @foreach (var item in Model.Videos)
                             {
-                                <li class="list-group-item">
-                                    <a href="@item.Path">@item.Name - @item.Status</a>
-                                </li>
+                            <li class="list-group-item">
+                                @item.Name > @item.Status >
+                                <a href="@item.Output">Output</a> >
+                                <a href="@item.Thumbnail">Thumbnail</a>
+                            </li>
                             }
                         </ul>
                     }
