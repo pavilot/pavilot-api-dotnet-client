@@ -4,118 +4,363 @@
         <name>Pavilot.Api.Client</name>
     </assembly>
     <members>
-        <member name="M:Pavilot.Api.Client.PavilotClient.ImagesAsync(System.String,System.String)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsGetAsync">
+            <summary>Projects</summary>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.ImagesAsync(System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsGetAsync(System.Threading.CancellationToken)">
             <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Projects</summary>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.HooksAllAsync(System.String)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsGetAsync(System.String)">
+            <summary>Project</summary>
+            <param name="projectId">Project Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.HooksAllAsync(System.String,System.Threading.CancellationToken)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsGetAsync(System.String,System.Threading.CancellationToken)">
             <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Project</summary>
+            <param name="projectId">Project Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.HooksAsync(System.String,Pavilot.Api.Client.HookRequest)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsGetAsync(System.String)">
+            <summary>Animations</summary>
+            <param name="projectId">Project Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.HooksAsync(System.String,Pavilot.Api.Client.HookRequest,System.Threading.CancellationToken)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsGetAsync(System.String,System.Threading.CancellationToken)">
             <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Animations</summary>
+            <param name="projectId">Project Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.Hooks2Async(System.String,System.Int32)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsGetAsync(System.String,System.String)">
+            <summary>Animation</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.Hooks2Async(System.String,System.Int32,System.Threading.CancellationToken)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsGetAsync(System.String,System.String,System.Threading.CancellationToken)">
             <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Animation</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.Hooks3Async(System.String,System.Int32)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsVideosGetAsync(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>Videos</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.Hooks3Async(System.String,System.Int32,System.Threading.CancellationToken)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsVideosGetAsync(System.String,System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
             <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Videos</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.ProjectsAllAsync">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsVideosPostAsync(System.String,System.String,Pavilot.Api.Client.ExportRequest)">
+            <summary>Video</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="body">Details</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.ProjectsAllAsync(System.Threading.CancellationToken)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsVideosPostAsync(System.String,System.String,Pavilot.Api.Client.ExportRequest,System.Threading.CancellationToken)">
             <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Video</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="body">Details</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.ProjectsAsync(System.String)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsVideosGetAsync(System.String,System.String,System.String)">
+            <summary>Video</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="videoId">Video Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.ProjectsAsync(System.String,System.Threading.CancellationToken)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsVideosGetAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
             <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Video</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="videoId">Video Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.AnimationsAsync(System.String)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsImagesGetAsync(System.String,System.String)">
+            <summary>Images</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.AnimationsAsync(System.String,System.Threading.CancellationToken)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsImagesGetAsync(System.String,System.String,System.Threading.CancellationToken)">
             <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Images</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.VideosAllAsync(System.String,System.String,System.Nullable{System.Int32})">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsImagesPostAsync(System.String,System.String,System.IO.Stream)">
+            <summary>Image</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.VideosAllAsync(System.String,System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsImagesPostAsync(System.String,System.String,System.IO.Stream,System.Threading.CancellationToken)">
             <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Image</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.VideosAsync(System.String,System.String,System.String)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsHooksGetAsync(System.String)">
+            <summary>List</summary>
+            <param name="projectId">Project Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.VideosAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsHooksGetAsync(System.String,System.Threading.CancellationToken)">
             <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>List</summary>
+            <param name="projectId">Project Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.ExportAsync(System.String,System.String,Pavilot.Api.Client.ExportRequest)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsHooksPostAsync(System.String,Pavilot.Api.Client.HookRequest)">
+            <summary>Add</summary>
+            <param name="projectId">Project Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.ExportAsync(System.String,System.String,Pavilot.Api.Client.ExportRequest,System.Threading.CancellationToken)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsHooksPostAsync(System.String,Pavilot.Api.Client.HookRequest,System.Threading.CancellationToken)">
             <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Add</summary>
+            <param name="projectId">Project Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.ImageAsync(System.String,System.String,System.IO.Stream)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsHooksGetAsync(System.String,System.Int32)">
+            <summary>Get</summary>
+            <param name="projectId">Project Id</param>
+            <param name="hookId">Hook Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.ImageAsync(System.String,System.String,System.IO.Stream,System.Threading.CancellationToken)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsHooksGetAsync(System.String,System.Int32,System.Threading.CancellationToken)">
             <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Get</summary>
+            <param name="projectId">Project Id</param>
+            <param name="hookId">Hook Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsHooksDeleteAsync(System.String,System.Int32)">
+            <summary>Delete</summary>
+            <param name="projectId">Project Id</param>
+            <param name="hookId">Hook Id</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsHooksDeleteAsync(System.String,System.Int32,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Delete</summary>
+            <param name="projectId">Project Id</param>
+            <param name="hookId">Hook Id</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="T:Pavilot.Api.Client.Mapping">
+            <summary>Mapping</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Mapping.Key">
+            <summary>Key</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Mapping.Value">
+            <summary>Value</summary>
+        </member>
+        <member name="T:Pavilot.Api.Client.Platform">
+            <summary>Distribution Platform</summary>
+        </member>
+        <member name="T:Pavilot.Api.Client.Distribution">
+            <summary>Distribution</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Distribution.Message">
+            <summary>Platform specific message, &lt;see cref="P:Dissper.Pavilot.Public.Api.Models.ExportRequest.Message"&gt;default message&lt;/see&gt; will be used if missing</summary>
+        </member>
+        <member name="T:Pavilot.Api.Client.ExportRequest">
+            <summary>New video export request</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.ExportRequest.Name">
+            <summary>Display name</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.ExportRequest.Message">
+            <summary>Default message for hooks or distributions</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.ExportRequest.Data">
+            <summary>Key-Value mappings to update animation</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.ExportRequest.Distributions">
+            <summary>Distribution list, hooks not included</summary>
+        </member>
+        <member name="T:Pavilot.Api.Client.Video">
+            <summary>Video</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Video.Id">
+            <summary>Video Id</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Video.AnimationId">
+            <summary>Animation Id</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Video.CreateDate">
+            <summary>Created Date</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Video.Name">
+            <summary>Name</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Video.Output">
+            <summary>Output Path</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Video.Thumbnail">
+            <summary>Thumbnail path</summary>
+        </member>
+        <member name="T:Pavilot.Api.Client.Image">
+            <summary>Saved Image</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Image.Filename">
+            <summary>Filename</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Image.Filepath">
+            <summary>Filepath</summary>
+        </member>
+        <member name="T:Pavilot.Api.Client.Hook">
+            <summary>Hook</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Hook.Id">
+            <summary>Hook Id</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Hook.ProjectId">
+            <summary>Project Id</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Hook.IsPaused">
+            <summary>Trigger paused state</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Hook.Url">
+            <summary>Hook subscription URL</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Hook.Source">
+            <summary>Source for hook request</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Hook.AnimationEvents">
+            <summary>Trigger hook on animation events</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Hook.AnimationFilter">
+            <summary>Apply only specified animations (comma-separated list)</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Hook.VideoEvents">
+            <summary>Trigger hook on video events</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Hook.VideoStatusFilter">
+            <summary>Apply only on specified video statuses (comma-separated list)</summary>
+        </member>
+        <member name="T:Pavilot.Api.Client.HookRequest">
+            <summary>Hook request</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.HookRequest.Url">
+            <summary>Hook subscription URL</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.HookRequest.Source">
+            <summary>Source for hook request</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.HookRequest.AnimationEvents">
+            <summary>Trigger hook on animation events</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.HookRequest.AnimationFilter">
+            <summary>Apply only specified animations (comma-separated list)</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.HookRequest.VideoEvents">
+            <summary>Trigger hook on video events</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.HookRequest.VideoStatusFilter">
+            <summary>Apply only on specified video statuses (comma-separated list)</summary>
+        </member>
+        <member name="T:Pavilot.Api.Client.Project">
+            <summary>Project</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Project.Id">
+            <summary>Project Id</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Project.CreateDate">
+            <summary>Created Date</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Project.Name">
+            <summary>Name</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Project.HasTwitter">
+            <summary>Is Twitter connected</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Project.HasFacebook">
+            <summary>Is Facebook connected</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Project.HasHooks">
+            <summary>Any hooks connected</summary>
+        </member>
+        <member name="T:Pavilot.Api.Client.Animation">
+            <summary>Animation</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Animation.Id">
+            <summary>Animation Id</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Animation.ProjectId">
+            <summary>Project Id</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Animation.CreateDate">
+            <summary>Created Date</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Animation.Name">
+            <summary>Name</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Animation.Duration">
+            <summary>Duration (in seconds)</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Animation.Tags">
+            <summary>Tags</summary>
         </member>
         <member name="T:Pavilot.Api.Client.IPavilotService">
             <summary>
             Pavilot Service
             Methods for api communication
+            </summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.IPavilotService.PavilotClient">
+            <summary>
+            Generated Client
+            </summary>
+        </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.VerifyAndSetupClient">
+            <summary>
+            Verify settings and initialize Pavilot Client
             </summary>
         </member>
         <member name="M:Pavilot.Api.Client.IPavilotService.IsValid">
@@ -161,9 +406,28 @@
             <param name="animationId">Animation Id</param>
             <param name="request">Mappings and distribution details</param>
         </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.HookSubscribeAsync(System.String,Pavilot.Api.Client.HookRequest)">
+            <summary>
+            Subscribe rest hook to receive updates
+            </summary>
+            <param name="projectId">Project Id</param>
+            <param name="request">Hook filter</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.HookUnsubscribeAsync(System.String,System.Int32)">
+            <summary>
+            Unsubscribe rest hook to stop receiving updates
+            </summary>
+            <param name="projectId">Project Id</param>
+            <param name="hookId">Hook Id</param>
+        </member>
         <member name="T:Pavilot.Api.Client.PavilotService">
             <summary>
             Pavilot Service
+            </summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.PavilotService.PavilotClient">
+            <summary>
+            Generated Client
             </summary>
         </member>
         <member name="M:Pavilot.Api.Client.PavilotService.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
@@ -177,6 +441,11 @@
             Constructor
             </summary>
             <param name="settings">Pavilot settings</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.VerifyAndSetupClient">
+            <summary>
+            Verify settings and initialize Pavilot Client
+            </summary>
         </member>
         <member name="M:Pavilot.Api.Client.PavilotService.IsValid">
             <summary>
@@ -220,6 +489,20 @@
             <param name="projectId">Project Id</param>
             <param name="animationId">Animation Id</param>
             <param name="request">Mappings and distribution details</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.HookSubscribeAsync(System.String,Pavilot.Api.Client.HookRequest)">
+            <summary>
+            Subscribe rest hook to receive updates
+            </summary>
+            <param name="projectId">Project Id</param>
+            <param name="request">Hook filter</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.HookUnsubscribeAsync(System.String,System.Int32)">
+            <summary>
+            Unsubscribe rest hook to stop receiving updates
+            </summary>
+            <param name="projectId">Project Id</param>
+            <param name="hookId">Hook Id</param>
         </member>
         <member name="T:Pavilot.Api.Client.IPavilotSettings">
             <summary>

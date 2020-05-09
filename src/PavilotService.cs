@@ -13,6 +13,16 @@ namespace Pavilot.Api.Client
     public interface IPavilotService
     {
         /// <summary>
+        /// Generated Client
+        /// </summary>
+        PavilotClient PavilotClient { get; }
+
+        /// <summary>
+        /// Verify settings and initialize Pavilot Client
+        /// </summary>
+        void VerifyAndSetupClient();
+
+        /// <summary>
         /// Validates Pavilot communication configuration.
         /// Throws ArgumentException if any of the settings is not valid. 
         /// Throws ArgumentNullException if any of the settings is missing.
@@ -54,6 +64,20 @@ namespace Pavilot.Api.Client
         /// <param name="animationId">Animation Id</param>
         /// <param name="request">Mappings and distribution details</param>
         Task<Video> ExportAsync(string projectId, string animationId, ExportRequest request);
+
+        /// <summary>
+        /// Subscribe rest hook to receive updates
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="request">Hook filter</param>
+        Task<Hook> HookSubscribeAsync(string projectId, HookRequest request);
+
+        /// <summary>
+        /// Unsubscribe rest hook to stop receiving updates
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="hookId">Hook Id</param>
+        Task<Hook> HookUnsubscribeAsync(string projectId, int hookId);
     }
 
     /// <summary>
@@ -63,8 +87,12 @@ namespace Pavilot.Api.Client
     {
         IPavilotSettings Settings { get; }
         HttpClient HttpClient { get; set; }
-        PavilotClient PavilotClient { get; set; }
         IEnumerable<Project> Projects { get; set; }
+
+        /// <summary>
+        /// Generated Client
+        /// </summary>
+        public PavilotClient PavilotClient { get; private set; }
 
         /// <summary>
         /// Constructor
@@ -92,7 +120,10 @@ namespace Pavilot.Api.Client
             Settings = settings;
         }
 
-        private void VerifyAndSetupClient()
+        /// <summary>
+        /// Verify settings and initialize Pavilot Client
+        /// </summary>
+        public void VerifyAndSetupClient()
         {
             if (IsValid())
             {
@@ -140,7 +171,7 @@ namespace Pavilot.Api.Client
             VerifyAndSetupClient();
             if (Projects == null)
             {
-                Projects = await PavilotClient.ProjectsAllAsync();
+                Projects = await PavilotClient.V1ProjectsGetAsync();
             }
             return Projects;
         }
@@ -152,7 +183,7 @@ namespace Pavilot.Api.Client
         public Task<IEnumerable<Animation>> GetAnimationsAsync(string projectId)
         {
             VerifyAndSetupClient();
-            return PavilotClient.AnimationsAsync(projectId);
+            return PavilotClient.V1ProjectsAnimationsGetAsync(projectId);
         }
 
         /// <summary>
@@ -165,7 +196,7 @@ namespace Pavilot.Api.Client
         public Task<IEnumerable<Video>> GetVideosAsync(string projectId, string animationId, int page = 0)
         {
             VerifyAndSetupClient();
-            return PavilotClient.VideosAllAsync(projectId, animationId, page);
+            return PavilotClient.V1ProjectsAnimationsVideosGetAsync(projectId, animationId, page);
         }
 
         /// <summary>
@@ -177,7 +208,7 @@ namespace Pavilot.Api.Client
         public Task<Video> GetVideoAsync(string projectId, string animationId, string videoId)
         {
             VerifyAndSetupClient();
-            return PavilotClient.VideosAsync(projectId, animationId, videoId);
+            return PavilotClient.V1ProjectsAnimationsVideosGetAsync(projectId, animationId, videoId);
         }
 
         /// <summary>
@@ -189,9 +220,29 @@ namespace Pavilot.Api.Client
         public Task<Video> ExportAsync(string projectId, string animationId, ExportRequest request)
         {
             VerifyAndSetupClient();
-            return PavilotClient.ExportAsync(projectId, animationId, request);
+            return PavilotClient.V1ProjectsAnimationsVideosPostAsync(projectId, animationId, request);
         }
 
+        /// <summary>
+        /// Subscribe rest hook to receive updates
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="request">Hook filter</param>
+        public Task<Hook> HookSubscribeAsync(string projectId, HookRequest request)
+        {
+            VerifyAndSetupClient();
+            return PavilotClient.V1ProjectsHooksPostAsync(projectId, request);
+        }
 
+        /// <summary>
+        /// Unsubscribe rest hook to stop receiving updates
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="hookId">Hook Id</param>
+        public Task<Hook> HookUnsubscribeAsync(string projectId, int hookId)
+        {
+            VerifyAndSetupClient();
+            return PavilotClient.V1ProjectsHooksDeleteAsync(projectId, hookId);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -52,14 +53,14 @@ namespace Pavilot.Client.Sample.Controllers
         {
             var request = new ExportRequest
             {
-                Name = "Name",
+                Name = DateTime.Now.ToShortDateString(),
                 Data = new List<Mapping>
                 {
-                    //new Mapping
-                    //{
-                    //    Key = "Key",
-                    //    Value = "Value"
-                    //}
+                    new Mapping
+                    {
+                        Key = "Time",
+                        Value = DateTime.Now.ToLongDateString()
+                    }
                 },
                 Distributions = new List<Distribution>
                 {

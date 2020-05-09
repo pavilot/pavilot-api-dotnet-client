@@ -10,8 +10,11 @@
     <PackageProjectUrl>https://pavilot.com</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>pavilot</PackageTags>
-    <PackageReleaseNotes>First version of Pavilot API .Net Client</PackageReleaseNotes>
+    <PackageReleaseNotes>Endpoint Updates
+RestHook Support
+</PackageReleaseNotes>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>1.2.0</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <DocumentationFile>C:\Users\UsameEsendir\Source\Repos\Dissper\Pavilot\pavilot-api-dotnet-client\src\Pavilot.Api.Client.xml</DocumentationFile>
