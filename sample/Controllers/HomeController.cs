@@ -54,21 +54,14 @@ namespace Pavilot.Client.Sample.Controllers
             var request = new ExportRequest
             {
                 Name = DateTime.Now.ToShortDateString(),
-                Data = new List<Mapping>
+                Message = "Default message to hooks and social media",
+                Mappings = new Dictionary<string, string>
                 {
-                    new Mapping
-                    {
-                        Key = "Time",
-                        Value = DateTime.Now.ToLongDateString()
-                    }
+                    { "Time", DateTime.Now.ToLongDateString() }
                 },
-                Distributions = new List<Distribution>
+                Distributions = new Distributions
                 {
-                    new Distribution
-                    {
-                        Message = "Message to social media",
-                        Platform = Platform.Twitter
-                    }
+                    Twitter = "Message to twitter"
                 }
             };
 

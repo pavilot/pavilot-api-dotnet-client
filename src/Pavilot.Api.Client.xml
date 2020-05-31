@@ -191,24 +191,6 @@
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="T:Pavilot.Api.Client.Mapping">
-            <summary>Mapping</summary>
-        </member>
-        <member name="P:Pavilot.Api.Client.Mapping.Key">
-            <summary>Key</summary>
-        </member>
-        <member name="P:Pavilot.Api.Client.Mapping.Value">
-            <summary>Value</summary>
-        </member>
-        <member name="T:Pavilot.Api.Client.Platform">
-            <summary>Distribution Platform</summary>
-        </member>
-        <member name="T:Pavilot.Api.Client.Distribution">
-            <summary>Distribution</summary>
-        </member>
-        <member name="P:Pavilot.Api.Client.Distribution.Message">
-            <summary>Platform specific message, &lt;see cref="P:Dissper.Pavilot.Public.Api.Models.ExportRequest.Message"&gt;default message&lt;/see&gt; will be used if missing</summary>
-        </member>
         <member name="T:Pavilot.Api.Client.ExportRequest">
             <summary>New video export request</summary>
         </member>
@@ -218,11 +200,14 @@
         <member name="P:Pavilot.Api.Client.ExportRequest.Message">
             <summary>Default message for hooks or distributions</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.ExportRequest.Data">
-            <summary>Key-Value mappings to update animation</summary>
+        <member name="P:Pavilot.Api.Client.ExportRequest.Mappings">
+            <summary>Key-Value mappings to update animation. Eg; 
+            &lt;example&gt;{"Type": "Round", "Color": "Blue"}&lt;/example&gt;</summary>
         </member>
         <member name="P:Pavilot.Api.Client.ExportRequest.Distributions">
-            <summary>Distribution list, hooks not included</summary>
+            <summary>Distribution list, hooks not included.
+            Key: Platform;
+            Value: Message to share</summary>
         </member>
         <member name="T:Pavilot.Api.Client.Video">
             <summary>Video</summary>
