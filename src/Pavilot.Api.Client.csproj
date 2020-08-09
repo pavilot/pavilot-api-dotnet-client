@@ -10,11 +10,10 @@
     <PackageProjectUrl>https://pavilot.com</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>pavilot</PackageTags>
-    <PackageReleaseNotes>Endpoint Updates
-RestHook Support
+    <PackageReleaseNotes>Documention updates
 </PackageReleaseNotes>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <DocumentationFile>C:\Users\UsameEsendir\Source\Repos\Dissper\Pavilot\pavilot-api-dotnet-client\src\Pavilot.Api.Client.xml</DocumentationFile>

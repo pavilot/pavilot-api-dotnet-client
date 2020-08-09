@@ -77,24 +77,17 @@ Add **services.AddPavilot()** in Startup.ConfigureServices method
     // Request New Export
     var request = new ExportRequest
     {
-        Name = "Any Name",
-        Data = new List<Mapping>
-        {
-            // Retrieve list of keys from Pavilot Portal
-            new Mapping
-            {
-                Key = "Key",
-                Value = "Value"
-            }
-        },
-        Distributions = new List<Distribution>
-        {
-            new Distribution
-            {
-                Message = "Message to social media",
-                Platform = Platform.Twitter
-            }
-        }
+		Name = DateTime.Now.ToShortDateString(),
+		Message = "Default message to hooks and social media",
+		Mappings = new Dictionary<string, string>
+		{
+			// Retrieve list of keys from Pavilot Portal
+			{ "Time", DateTime.Now.ToLongDateString() }
+		},
+		Distributions = new Distributions
+		{
+			Twitter = "Message to twitter"
+		}
     };
     pavilotService.ExportAsync(projectId, animationId, request);
 ```
