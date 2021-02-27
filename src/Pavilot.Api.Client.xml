@@ -105,6 +105,23 @@
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsVideosDeleteAsync(System.String,System.String,System.String)">
+            <summary>Video</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="videoId">Video Id</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsVideosDeleteAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Video</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="videoId">Video Id</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
         <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsImagesGetAsync(System.String,System.String)">
             <summary>Images</summary>
             <param name="projectId">Project Id</param>
@@ -120,16 +137,46 @@
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsImagesPostAsync(System.String,System.String,System.IO.Stream)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsImagesPostAsync(System.String,System.String,System.IO.FileStream)">
             <summary>Image</summary>
             <param name="projectId">Project Id</param>
             <param name="animationId">Animation Id</param>
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsImagesPostAsync(System.String,System.String,System.IO.Stream,System.Threading.CancellationToken)">
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsImagesPostAsync(System.String,System.String,System.IO.FileStream,System.Threading.CancellationToken)">
             <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
             <summary>Image</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsFontsGetAsync(System.String,System.String)">
+            <summary>Fonts</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsFontsGetAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Fonts</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsFontsPostAsync(System.String,System.String,System.IO.FileStream)">
+            <summary>Font</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsFontsPostAsync(System.String,System.String,System.IO.FileStream,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Font</summary>
             <param name="projectId">Project Id</param>
             <param name="animationId">Animation Id</param>
             <returns>Success</returns>
@@ -191,53 +238,55 @@
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="T:Pavilot.Api.Client.ExportRequest">
-            <summary>New video export request</summary>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsSampleHooksAsync">
+            <summary>Sample hooks</summary>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="P:Pavilot.Api.Client.ExportRequest.Name">
-            <summary>Display name</summary>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsSampleHooksAsync(System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Sample hooks</summary>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
-        <member name="P:Pavilot.Api.Client.ExportRequest.Message">
-            <summary>Default message for hooks or distributions</summary>
+        <member name="T:Pavilot.Api.Client.Animation">
+            <summary>Animation</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.ExportRequest.Mappings">
-            <summary>Key-Value mappings to update animation. Eg; 
-            &lt;example&gt;{"Type": "Round", "Color": "Blue"}&lt;/example&gt;</summary>
-        </member>
-        <member name="P:Pavilot.Api.Client.ExportRequest.Distributions">
-            <summary>Distribution list, hooks not included.
-            Key: Platform;
-            Value: Message to share</summary>
-        </member>
-        <member name="T:Pavilot.Api.Client.Video">
-            <summary>Video</summary>
-        </member>
-        <member name="P:Pavilot.Api.Client.Video.Id">
-            <summary>Video Id</summary>
-        </member>
-        <member name="P:Pavilot.Api.Client.Video.AnimationId">
+        <member name="P:Pavilot.Api.Client.Animation.Id">
             <summary>Animation Id</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.Video.CreateDate">
+        <member name="P:Pavilot.Api.Client.Animation.ProjectId">
+            <summary>Project Id</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.Animation.CreateDate">
             <summary>Created Date</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.Video.Name">
+        <member name="P:Pavilot.Api.Client.Animation.Name">
             <summary>Name</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.Video.Output">
-            <summary>Output Path</summary>
+        <member name="P:Pavilot.Api.Client.Animation.Duration">
+            <summary>Duration (in seconds)</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.Video.Thumbnail">
-            <summary>Thumbnail path</summary>
+        <member name="P:Pavilot.Api.Client.Animation.Tags">
+            <summary>Tags</summary>
         </member>
-        <member name="T:Pavilot.Api.Client.Image">
-            <summary>Saved Image</summary>
+        <member name="T:Pavilot.Api.Client.Asset">
+            <summary>Saved Asset</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.Image.Filename">
+        <member name="P:Pavilot.Api.Client.Asset.Filename">
             <summary>Filename</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.Image.Filepath">
+        <member name="P:Pavilot.Api.Client.Asset.Filepath">
             <summary>Filepath</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.ConnectionsStatus.Twitter">
+            <summary>Is Twitter connected</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.ConnectionsStatus.Facebook">
+            <summary>Is Facebook connected</summary>
+        </member>
+        <member name="P:Pavilot.Api.Client.ConnectionsStatus.Hooks">
+            <summary>Any hooks connected</summary>
         </member>
         <member name="T:Pavilot.Api.Client.Hook">
             <summary>Hook</summary>
@@ -302,35 +351,26 @@
         <member name="P:Pavilot.Api.Client.Project.Name">
             <summary>Name</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.Project.HasTwitter">
-            <summary>Is Twitter connected</summary>
+        <member name="T:Pavilot.Api.Client.Video">
+            <summary>Video</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.Project.HasFacebook">
-            <summary>Is Facebook connected</summary>
+        <member name="P:Pavilot.Api.Client.Video.Id">
+            <summary>Video Id</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.Project.HasHooks">
-            <summary>Any hooks connected</summary>
-        </member>
-        <member name="T:Pavilot.Api.Client.Animation">
-            <summary>Animation</summary>
-        </member>
-        <member name="P:Pavilot.Api.Client.Animation.Id">
+        <member name="P:Pavilot.Api.Client.Video.AnimationId">
             <summary>Animation Id</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.Animation.ProjectId">
-            <summary>Project Id</summary>
-        </member>
-        <member name="P:Pavilot.Api.Client.Animation.CreateDate">
+        <member name="P:Pavilot.Api.Client.Video.CreateDate">
             <summary>Created Date</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.Animation.Name">
+        <member name="P:Pavilot.Api.Client.Video.Name">
             <summary>Name</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.Animation.Duration">
-            <summary>Duration (in seconds)</summary>
+        <member name="P:Pavilot.Api.Client.Video.Output">
+            <summary>Output Path</summary>
         </member>
-        <member name="P:Pavilot.Api.Client.Animation.Tags">
-            <summary>Tags</summary>
+        <member name="P:Pavilot.Api.Client.Video.Thumbnail">
+            <summary>Thumbnail path</summary>
         </member>
         <member name="T:Pavilot.Api.Client.IPavilotService">
             <summary>
@@ -383,6 +423,14 @@
             <param name="animationId">Animation Id</param>
             <param name="videoId">Video Id</param>
         </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.DeleteVideoAsync(System.String,System.String,System.String)">
+            <summary>
+            Delete video with all files
+            </summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="videoId">Video Id</param>
+        </member>
         <member name="M:Pavilot.Api.Client.IPavilotService.ExportAsync(System.String,System.String,Pavilot.Api.Client.ExportRequest)">
             <summary>
             Export a new video with updated data
@@ -390,6 +438,40 @@
             <param name="projectId">Project Id</param>
             <param name="animationId">Animation Id</param>
             <param name="request">Mappings and distribution details</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.GetImages(System.String,System.String)">
+            <summary>
+            Get images of the animation
+            </summary>
+            <param name="projectId"></param>
+            <param name="animationId"></param>
+            <returns>Asset info with filename and filepath for mapping</returns>
+        </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.PostImage(System.String,System.String,System.IO.FileStream)">
+            <summary>
+            Upload new image for the animation
+            </summary>
+            <param name="projectId"></param>
+            <param name="animationId"></param>
+            <param name="file">File stream</param>
+            <returns>Asset info with filename for mapping</returns>
+        </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.GetFonts(System.String,System.String)">
+            <summary>
+            Get existing fonts of the animation
+            </summary>
+            <param name="projectId"></param>
+            <param name="animationId"></param>
+            <returns>Asset info with filename and filepath for mapping</returns>
+        </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.PostFont(System.String,System.String,System.IO.FileStream)">
+            <summary>
+            Upload new font for the animation
+            </summary>
+            <param name="projectId"></param>
+            <param name="animationId"></param>
+            <param name="file">File stream</param>
+            <returns>Asset info with filename for mapping</returns>
         </member>
         <member name="M:Pavilot.Api.Client.IPavilotService.HookSubscribeAsync(System.String,Pavilot.Api.Client.HookRequest)">
             <summary>
@@ -467,6 +549,14 @@
             <param name="animationId">Animation Id</param>
             <param name="videoId">Video Id</param>
         </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.DeleteVideoAsync(System.String,System.String,System.String)">
+            <summary>
+            Delete video with all files
+            </summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <param name="videoId">Video Id</param>
+        </member>
         <member name="M:Pavilot.Api.Client.PavilotService.ExportAsync(System.String,System.String,Pavilot.Api.Client.ExportRequest)">
             <summary>
             Export a new video with updated data
@@ -474,6 +564,40 @@
             <param name="projectId">Project Id</param>
             <param name="animationId">Animation Id</param>
             <param name="request">Mappings and distribution details</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.GetImages(System.String,System.String)">
+            <summary>
+            Get images of the animation
+            </summary>
+            <param name="projectId"></param>
+            <param name="animationId"></param>
+            <returns>Asset info with filename and filepath for mapping</returns>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.PostImage(System.String,System.String,System.IO.FileStream)">
+            <summary>
+            Upload new image for the animation
+            </summary>
+            <param name="projectId"></param>
+            <param name="animationId"></param>
+            <param name="file">File stream</param>
+            <returns>Asset info with filename for mapping</returns>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.GetFonts(System.String,System.String)">
+            <summary>
+            Get existing fonts of the animation
+            </summary>
+            <param name="projectId"></param>
+            <param name="animationId"></param>
+            <returns>Asset info with filename and filepath for mapping</returns>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.PostFont(System.String,System.String,System.IO.FileStream)">
+            <summary>
+            Upload new font for the animation
+            </summary>
+            <param name="projectId"></param>
+            <param name="animationId"></param>
+            <param name="file">File stream</param>
+            <returns>Asset info with filename for mapping</returns>
         </member>
         <member name="M:Pavilot.Api.Client.PavilotService.HookSubscribeAsync(System.String,Pavilot.Api.Client.HookRequest)">
             <summary>

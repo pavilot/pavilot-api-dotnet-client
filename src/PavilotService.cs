@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace Pavilot.Api.Client
 {
@@ -58,12 +59,54 @@ namespace Pavilot.Api.Client
         Task<Video> GetVideoAsync(string projectId, string animationId, string videoId);
 
         /// <summary>
+        /// Delete video with all files
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="animationId">Animation Id</param>
+        /// <param name="videoId">Video Id</param>
+        Task<bool> DeleteVideoAsync(string projectId, string animationId, string videoId);
+
+        /// <summary>
         /// Export a new video with updated data
         /// </summary>
         /// <param name="projectId">Project Id</param>
         /// <param name="animationId">Animation Id</param>
         /// <param name="request">Mappings and distribution details</param>
         Task<Video> ExportAsync(string projectId, string animationId, ExportRequest request);
+
+        /// <summary>
+        /// Get images of the animation
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="animationId"></param>
+        /// <returns>Asset info with filename and filepath for mapping</returns>
+        Task<IEnumerable<Asset>> GetImages(string projectId, string animationId);
+
+        /// <summary>
+        /// Upload new image for the animation
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="animationId"></param>
+        /// <param name="file">File stream</param>
+        /// <returns>Asset info with filename for mapping</returns>
+        Task<Asset> PostImage(string projectId, string animationId, FileStream file);
+
+        /// <summary>
+        /// Get existing fonts of the animation
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="animationId"></param>
+        /// <returns>Asset info with filename and filepath for mapping</returns>
+        Task<IEnumerable<Asset>> GetFonts(string projectId, string animationId);
+
+        /// <summary>
+        /// Upload new font for the animation
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="animationId"></param>
+        /// <param name="file">File stream</param>
+        /// <returns>Asset info with filename for mapping</returns>
+        Task<Asset> PostFont(string projectId, string animationId, FileStream file);
 
         /// <summary>
         /// Subscribe rest hook to receive updates
@@ -212,6 +255,18 @@ namespace Pavilot.Api.Client
         }
 
         /// <summary>
+        /// Delete video with all files
+        /// </summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="animationId">Animation Id</param>
+        /// <param name="videoId">Video Id</param>
+        public Task<bool> DeleteVideoAsync(string projectId, string animationId, string videoId)
+        {
+            VerifyAndSetupClient();
+            return PavilotClient.V1ProjectsAnimationsVideosDeleteAsync(projectId, animationId, videoId);
+        }
+
+        /// <summary>
         /// Export a new video with updated data
         /// </summary>
         /// <param name="projectId">Project Id</param>
@@ -221,6 +276,56 @@ namespace Pavilot.Api.Client
         {
             VerifyAndSetupClient();
             return PavilotClient.V1ProjectsAnimationsVideosPostAsync(projectId, animationId, request);
+        }
+
+        /// <summary>
+        /// Get images of the animation
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="animationId"></param>
+        /// <returns>Asset info with filename and filepath for mapping</returns>
+        public Task<IEnumerable<Asset>> GetImages(string projectId, string animationId)
+        {
+            VerifyAndSetupClient();
+            return PavilotClient.V1ProjectsAnimationsImagesGetAsync(projectId, animationId);
+        }
+
+        /// <summary>
+        /// Upload new image for the animation
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="animationId"></param>
+        /// <param name="file">File stream</param>
+        /// <returns>Asset info with filename for mapping</returns>
+        public Task<Asset> PostImage(string projectId, string animationId, FileStream file)
+        {
+            VerifyAndSetupClient();
+            return PavilotClient.V1ProjectsAnimationsImagesPostAsync(projectId, animationId, file);
+        }
+
+        /// <summary>
+        /// Get existing fonts of the animation
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="animationId"></param>
+        /// <returns>Asset info with filename and filepath for mapping</returns>
+        public Task<IEnumerable<Asset>> GetFonts(string projectId, string animationId)
+        {
+            VerifyAndSetupClient();
+            return PavilotClient.V1ProjectsAnimationsFontsGetAsync(projectId, animationId);
+        }
+
+        /// <summary>
+        /// Upload new font for the animation
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="animationId"></param>
+        /// <param name="file">File stream</param>
+        /// <returns>Asset info with filename for mapping</returns>
+        public Task<Asset> PostFont(string projectId, string animationId, FileStream file)
+        {
+            VerifyAndSetupClient();
+            return PavilotClient.V1ProjectsAnimationsFontsPostAsync(projectId, animationId, file);
         }
 
         /// <summary>

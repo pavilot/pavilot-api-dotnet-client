@@ -6,11 +6,11 @@
 
 This library will help you to easily integrate with Pavilot API and focus on your work
 
-To learn more about Pavilot please visit [pavilot.com](https://pavilot.com)
+To learn more about video automation, please visit [pavilot.com](https://pavilot.com)
 
 ## Setup
 
-### 1. Startup.cs 
+### 1. Startup.cs
 
 Define configuration in appsettings.json as below
 
@@ -50,7 +50,7 @@ Add **services.AddPavilot()** in Startup.ConfigureServices method
     }
 ```
 
-### 2. Manual Initialize 
+### 2. Manual Initialize
 
 ```csharp
     var pavilotSettings = new PavilotSettings
@@ -77,18 +77,17 @@ Add **services.AddPavilot()** in Startup.ConfigureServices method
     // Request New Export
     var request = new ExportRequest
     {
-		Name = DateTime.Now.ToShortDateString(),
-		Message = "Default message to hooks and social media",
-		Mappings = new Dictionary<string, string>
-		{
-			// Retrieve list of keys from Pavilot Portal
-			{ "Time", DateTime.Now.ToLongDateString() }
-		},
-		Distributions = new Distributions
-		{
-			Twitter = "Message to twitter"
-		}
+        Name = DateTime.Now.ToShortDateString(),
+        Message = "Default message to hooks and social media",
+        Mappings = new Dictionary<string, string>
+        {
+          // Retrieve list of keys from Pavilot Portal
+          { "Time", DateTime.Now.ToLongDateString() }
+        },
+        Distributions = new Distributions
+        {
+          Twitter = "Message to twitter"
+        }
     };
     pavilotService.ExportAsync(projectId, animationId, request);
 ```
-

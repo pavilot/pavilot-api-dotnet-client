@@ -12,10 +12,11 @@
 
 namespace Pavilot.Api.Client
 {
+    using System.IO;
     using System = global::System;
-
+    
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.5.0.0 (NJsonSchema v10.1.15.0 (Newtonsoft.Json v12.0.0.0))")]
-    public partial class PavilotClient
+    public partial class PavilotClient 
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
@@ -24,30 +25,30 @@ namespace Pavilot.Api.Client
         public PavilotClient(string baseUrl, System.Net.Http.HttpClient httpClient)
         {
             BaseUrl = baseUrl;
-            _httpClient = httpClient;
+            _httpClient = httpClient; 
             _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings);
         }
-
+    
         private Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
         {
             var settings = new Newtonsoft.Json.JsonSerializerSettings();
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
-
-        public string BaseUrl
+    
+        public string BaseUrl 
         {
             get { return _baseUrl; }
             set { _baseUrl = value; }
         }
-
+    
         protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _settings.Value; } }
-
+    
         partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings);
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
-
+    
         /// <summary>Projects</summary>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -55,7 +56,7 @@ namespace Pavilot.Api.Client
         {
             return V1ProjectsGetAsync(System.Threading.CancellationToken.None);
         }
-
+    
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Projects</summary>
         /// <returns>Success</returns>
@@ -64,7 +65,7 @@ namespace Pavilot.Api.Client
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects");
-
+    
             var client_ = _httpClient;
             try
             {
@@ -72,12 +73,12 @@ namespace Pavilot.Api.Client
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+    
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
                     request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
                     PrepareRequest(client_, request_, url_);
-
+    
                     var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
@@ -87,34 +88,34 @@ namespace Pavilot.Api.Client
                             foreach (var item_ in response_.Content.Headers)
                                 headers_[item_.Key] = item_.Value;
                         }
-
+    
                         ProcessResponse(client_, response_);
-
+    
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
+                        if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IEnumerable<Project>>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
-                        if (status_ == "401")
+                        if (status_ == "401") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
-                        if (status_ == "403")
+                        if (status_ == "403") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-
+            
                         return default(System.Collections.Generic.IEnumerable<Project>);
                     }
                     finally
@@ -128,7 +129,7 @@ namespace Pavilot.Api.Client
             {
             }
         }
-
+    
         /// <summary>Project</summary>
         /// <param name="projectId">Project Id</param>
         /// <returns>Success</returns>
@@ -137,7 +138,7 @@ namespace Pavilot.Api.Client
         {
             return V1ProjectsGetAsync(projectId, System.Threading.CancellationToken.None);
         }
-
+    
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Project</summary>
         /// <param name="projectId">Project Id</param>
@@ -145,10 +146,13 @@ namespace Pavilot.Api.Client
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<Project> V1ProjectsGetAsync(string projectId, System.Threading.CancellationToken cancellationToken)
         {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}");
             urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
-
+    
             var client_ = _httpClient;
             try
             {
@@ -156,12 +160,12 @@ namespace Pavilot.Api.Client
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+    
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
                     request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
                     PrepareRequest(client_, request_, url_);
-
+    
                     var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
@@ -171,34 +175,34 @@ namespace Pavilot.Api.Client
                             foreach (var item_ in response_.Content.Headers)
                                 headers_[item_.Key] = item_.Value;
                         }
-
+    
                         ProcessResponse(client_, response_);
-
+    
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
+                        if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Project>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
-                        if (status_ == "401")
+                        if (status_ == "401") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
-                        if (status_ == "403")
+                        if (status_ == "403") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-
+            
                         return default(Project);
                     }
                     finally
@@ -212,7 +216,7 @@ namespace Pavilot.Api.Client
             {
             }
         }
-
+    
         /// <summary>Animations</summary>
         /// <param name="projectId">Project Id</param>
         /// <returns>Success</returns>
@@ -221,7 +225,7 @@ namespace Pavilot.Api.Client
         {
             return V1ProjectsAnimationsGetAsync(projectId, System.Threading.CancellationToken.None);
         }
-
+    
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Animations</summary>
         /// <param name="projectId">Project Id</param>
@@ -229,10 +233,13 @@ namespace Pavilot.Api.Client
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Animation>> V1ProjectsAnimationsGetAsync(string projectId, System.Threading.CancellationToken cancellationToken)
         {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/animations");
             urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
-
+    
             var client_ = _httpClient;
             try
             {
@@ -240,12 +247,12 @@ namespace Pavilot.Api.Client
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+    
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
                     request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
                     PrepareRequest(client_, request_, url_);
-
+    
                     var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
@@ -255,34 +262,34 @@ namespace Pavilot.Api.Client
                             foreach (var item_ in response_.Content.Headers)
                                 headers_[item_.Key] = item_.Value;
                         }
-
+    
                         ProcessResponse(client_, response_);
-
+    
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
+                        if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IEnumerable<Animation>>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
-                        if (status_ == "401")
+                        if (status_ == "401") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
-                        if (status_ == "403")
+                        if (status_ == "403") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-
+            
                         return default(System.Collections.Generic.IEnumerable<Animation>);
                     }
                     finally
@@ -296,7 +303,7 @@ namespace Pavilot.Api.Client
             {
             }
         }
-
+    
         /// <summary>Animation</summary>
         /// <param name="projectId">Project Id</param>
         /// <param name="animationId">Animation Id</param>
@@ -306,7 +313,7 @@ namespace Pavilot.Api.Client
         {
             return V1ProjectsAnimationsGetAsync(projectId, animationId, System.Threading.CancellationToken.None);
         }
-
+    
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Animation</summary>
         /// <param name="projectId">Project Id</param>
@@ -315,11 +322,17 @@ namespace Pavilot.Api.Client
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Animation>> V1ProjectsAnimationsGetAsync(string projectId, string animationId, System.Threading.CancellationToken cancellationToken)
         {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
+            if (animationId == null)
+                throw new System.ArgumentNullException("animationId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/animations/{animationId}");
             urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
             urlBuilder_.Replace("{animationId}", System.Uri.EscapeDataString(ConvertToString(animationId, System.Globalization.CultureInfo.InvariantCulture)));
-
+    
             var client_ = _httpClient;
             try
             {
@@ -327,12 +340,12 @@ namespace Pavilot.Api.Client
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+    
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
                     request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
                     PrepareRequest(client_, request_, url_);
-
+    
                     var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
@@ -342,34 +355,34 @@ namespace Pavilot.Api.Client
                             foreach (var item_ in response_.Content.Headers)
                                 headers_[item_.Key] = item_.Value;
                         }
-
+    
                         ProcessResponse(client_, response_);
-
+    
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
+                        if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IEnumerable<Animation>>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
-                        if (status_ == "401")
+                        if (status_ == "401") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
-                        if (status_ == "403")
+                        if (status_ == "403") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-
+            
                         return default(System.Collections.Generic.IEnumerable<Animation>);
                     }
                     finally
@@ -383,7 +396,7 @@ namespace Pavilot.Api.Client
             {
             }
         }
-
+    
         /// <summary>Videos</summary>
         /// <param name="projectId">Project Id</param>
         /// <param name="animationId">Animation Id</param>
@@ -393,7 +406,7 @@ namespace Pavilot.Api.Client
         {
             return V1ProjectsAnimationsVideosGetAsync(projectId, animationId, page, System.Threading.CancellationToken.None);
         }
-
+    
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Videos</summary>
         /// <param name="projectId">Project Id</param>
@@ -402,16 +415,22 @@ namespace Pavilot.Api.Client
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Video>> V1ProjectsAnimationsVideosGetAsync(string projectId, string animationId, int? page, System.Threading.CancellationToken cancellationToken)
         {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
+            if (animationId == null)
+                throw new System.ArgumentNullException("animationId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/animations/{animationId}/videos?");
             urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
             urlBuilder_.Replace("{animationId}", System.Uri.EscapeDataString(ConvertToString(animationId, System.Globalization.CultureInfo.InvariantCulture)));
-            if (page != null)
+            if (page != null) 
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("page") + "=").Append(System.Uri.EscapeDataString(ConvertToString(page, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             urlBuilder_.Length--;
-
+    
             var client_ = _httpClient;
             try
             {
@@ -419,12 +438,12 @@ namespace Pavilot.Api.Client
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+    
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
                     request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
                     PrepareRequest(client_, request_, url_);
-
+    
                     var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
@@ -434,34 +453,34 @@ namespace Pavilot.Api.Client
                             foreach (var item_ in response_.Content.Headers)
                                 headers_[item_.Key] = item_.Value;
                         }
-
+    
                         ProcessResponse(client_, response_);
-
+    
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
+                        if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IEnumerable<Video>>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
-                        if (status_ == "401")
+                        if (status_ == "401") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
-                        if (status_ == "403")
+                        if (status_ == "403") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-
+            
                         return default(System.Collections.Generic.IEnumerable<Video>);
                     }
                     finally
@@ -475,7 +494,7 @@ namespace Pavilot.Api.Client
             {
             }
         }
-
+    
         /// <summary>Video</summary>
         /// <param name="projectId">Project Id</param>
         /// <param name="animationId">Animation Id</param>
@@ -486,7 +505,7 @@ namespace Pavilot.Api.Client
         {
             return V1ProjectsAnimationsVideosPostAsync(projectId, animationId, body, System.Threading.CancellationToken.None);
         }
-
+    
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Video</summary>
         /// <param name="projectId">Project Id</param>
@@ -496,11 +515,17 @@ namespace Pavilot.Api.Client
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<Video> V1ProjectsAnimationsVideosPostAsync(string projectId, string animationId, ExportRequest body, System.Threading.CancellationToken cancellationToken)
         {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
+            if (animationId == null)
+                throw new System.ArgumentNullException("animationId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/animations/{animationId}/videos");
             urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
             urlBuilder_.Replace("{animationId}", System.Uri.EscapeDataString(ConvertToString(animationId, System.Globalization.CultureInfo.InvariantCulture)));
-
+    
             var client_ = _httpClient;
             try
             {
@@ -511,12 +536,12 @@ namespace Pavilot.Api.Client
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+    
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
                     request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
                     PrepareRequest(client_, request_, url_);
-
+    
                     var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
@@ -526,34 +551,34 @@ namespace Pavilot.Api.Client
                             foreach (var item_ in response_.Content.Headers)
                                 headers_[item_.Key] = item_.Value;
                         }
-
+    
                         ProcessResponse(client_, response_);
-
+    
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
+                        if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Video>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
-                        if (status_ == "401")
+                        if (status_ == "401") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
-                        if (status_ == "403")
+                        if (status_ == "403") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-
+            
                         return default(Video);
                     }
                     finally
@@ -567,7 +592,7 @@ namespace Pavilot.Api.Client
             {
             }
         }
-
+    
         /// <summary>Video</summary>
         /// <param name="projectId">Project Id</param>
         /// <param name="animationId">Animation Id</param>
@@ -578,7 +603,7 @@ namespace Pavilot.Api.Client
         {
             return V1ProjectsAnimationsVideosGetAsync(projectId, animationId, videoId, System.Threading.CancellationToken.None);
         }
-
+    
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Video</summary>
         /// <param name="projectId">Project Id</param>
@@ -588,12 +613,21 @@ namespace Pavilot.Api.Client
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<Video> V1ProjectsAnimationsVideosGetAsync(string projectId, string animationId, string videoId, System.Threading.CancellationToken cancellationToken)
         {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
+            if (animationId == null)
+                throw new System.ArgumentNullException("animationId");
+    
+            if (videoId == null)
+                throw new System.ArgumentNullException("videoId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/animations/{animationId}/videos/{videoId}");
             urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
             urlBuilder_.Replace("{animationId}", System.Uri.EscapeDataString(ConvertToString(animationId, System.Globalization.CultureInfo.InvariantCulture)));
             urlBuilder_.Replace("{videoId}", System.Uri.EscapeDataString(ConvertToString(videoId, System.Globalization.CultureInfo.InvariantCulture)));
-
+    
             var client_ = _httpClient;
             try
             {
@@ -601,12 +635,12 @@ namespace Pavilot.Api.Client
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+    
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
                     request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
                     PrepareRequest(client_, request_, url_);
-
+    
                     var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
@@ -616,34 +650,34 @@ namespace Pavilot.Api.Client
                             foreach (var item_ in response_.Content.Headers)
                                 headers_[item_.Key] = item_.Value;
                         }
-
+    
                         ProcessResponse(client_, response_);
-
+    
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
+                        if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Video>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
-                        if (status_ == "401")
+                        if (status_ == "401") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
-                        if (status_ == "403")
+                        if (status_ == "403") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-
+            
                         return default(Video);
                     }
                     finally
@@ -657,30 +691,135 @@ namespace Pavilot.Api.Client
             {
             }
         }
-
+    
+        /// <summary>Video</summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="animationId">Animation Id</param>
+        /// <param name="videoId">Video Id</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<bool> V1ProjectsAnimationsVideosDeleteAsync(string projectId, string animationId, string videoId)
+        {
+            return V1ProjectsAnimationsVideosDeleteAsync(projectId, animationId, videoId, System.Threading.CancellationToken.None);
+        }
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Video</summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="animationId">Animation Id</param>
+        /// <param name="videoId">Video Id</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<bool> V1ProjectsAnimationsVideosDeleteAsync(string projectId, string animationId, string videoId, System.Threading.CancellationToken cancellationToken)
+        {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
+            if (animationId == null)
+                throw new System.ArgumentNullException("animationId");
+    
+            if (videoId == null)
+                throw new System.ArgumentNullException("videoId");
+    
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/animations/{animationId}/videos/{videoId}");
+            urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Replace("{animationId}", System.Uri.EscapeDataString(ConvertToString(animationId, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Replace("{videoId}", System.Uri.EscapeDataString(ConvertToString(videoId, System.Globalization.CultureInfo.InvariantCulture)));
+    
+            var client_ = _httpClient;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("DELETE");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200") 
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<bool>(response_, headers_).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == "401") 
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == "403") 
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ != "200" && status_ != "204")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                        }
+            
+                        return default(bool);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+            }
+        }
+    
         /// <summary>Images</summary>
         /// <param name="projectId">Project Id</param>
         /// <param name="animationId">Animation Id</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Image>> V1ProjectsAnimationsImagesGetAsync(string projectId, string animationId)
+        public System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Asset>> V1ProjectsAnimationsImagesGetAsync(string projectId, string animationId)
         {
             return V1ProjectsAnimationsImagesGetAsync(projectId, animationId, System.Threading.CancellationToken.None);
         }
-
+    
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Images</summary>
         /// <param name="projectId">Project Id</param>
         /// <param name="animationId">Animation Id</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Image>> V1ProjectsAnimationsImagesGetAsync(string projectId, string animationId, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Asset>> V1ProjectsAnimationsImagesGetAsync(string projectId, string animationId, System.Threading.CancellationToken cancellationToken)
         {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
+            if (animationId == null)
+                throw new System.ArgumentNullException("animationId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/animations/{animationId}/images");
             urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
             urlBuilder_.Replace("{animationId}", System.Uri.EscapeDataString(ConvertToString(animationId, System.Globalization.CultureInfo.InvariantCulture)));
-
+    
             var client_ = _httpClient;
             try
             {
@@ -688,12 +827,12 @@ namespace Pavilot.Api.Client
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+    
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
                     request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
                     PrepareRequest(client_, request_, url_);
-
+    
                     var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
@@ -703,35 +842,35 @@ namespace Pavilot.Api.Client
                             foreach (var item_ in response_.Content.Headers)
                                 headers_[item_.Key] = item_.Value;
                         }
-
+    
                         ProcessResponse(client_, response_);
-
+    
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
+                        if (status_ == "200") 
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IEnumerable<Image>>(response_, headers_).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IEnumerable<Asset>>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
-                        if (status_ == "401")
+                        if (status_ == "401") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
-                        if (status_ == "403")
+                        if (status_ == "403") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-
-                        return default(System.Collections.Generic.IEnumerable<Image>);
+            
+                        return default(System.Collections.Generic.IEnumerable<Asset>);
                     }
                     finally
                     {
@@ -744,46 +883,63 @@ namespace Pavilot.Api.Client
             {
             }
         }
-
+    
         /// <summary>Image</summary>
         /// <param name="projectId">Project Id</param>
         /// <param name="animationId">Animation Id</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Image> V1ProjectsAnimationsImagesPostAsync(string projectId, string animationId, System.IO.Stream body)
+        public System.Threading.Tasks.Task<Asset> V1ProjectsAnimationsImagesPostAsync(string projectId, string animationId, System.IO.FileStream file)
         {
-            return V1ProjectsAnimationsImagesPostAsync(projectId, animationId, body, System.Threading.CancellationToken.None);
+            return V1ProjectsAnimationsImagesPostAsync(projectId, animationId, file, System.Threading.CancellationToken.None);
         }
-
+    
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Image</summary>
         /// <param name="projectId">Project Id</param>
         /// <param name="animationId">Animation Id</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async System.Threading.Tasks.Task<Image> V1ProjectsAnimationsImagesPostAsync(string projectId, string animationId, System.IO.Stream body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Asset> V1ProjectsAnimationsImagesPostAsync(string projectId, string animationId, System.IO.FileStream file, System.Threading.CancellationToken cancellationToken)
         {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
+            if (animationId == null)
+                throw new System.ArgumentNullException("animationId");
+
+            if (file == null)
+                throw new System.ArgumentNullException("body");
+
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/animations/{animationId}/images");
             urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
             urlBuilder_.Replace("{animationId}", System.Uri.EscapeDataString(ConvertToString(animationId, System.Globalization.CultureInfo.InvariantCulture)));
-
+    
             var client_ = _httpClient;
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StreamContent(body);
-                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("multipart/form-data");
+                    var boundary_ = System.Guid.NewGuid().ToString();
+                    var content_ = new System.Net.Http.MultipartFormDataContent(boundary_);
+                    content_.Headers.Remove("Content-Type");
+                    content_.Headers.TryAddWithoutValidation("Content-Type", "multipart/form-data; boundary=" + boundary_);
+                    if (file != null)
+                    {
+                        var content_file_ = new System.Net.Http.StreamContent(file);
+                        content_.Add(content_file_, "file", Path.GetFileName(file.Name) ?? "file");
+                    }
+
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+    
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
                     request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
                     PrepareRequest(client_, request_, url_);
-
+    
                     var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
@@ -793,35 +949,35 @@ namespace Pavilot.Api.Client
                             foreach (var item_ in response_.Content.Headers)
                                 headers_[item_.Key] = item_.Value;
                         }
-
+    
                         ProcessResponse(client_, response_);
-
+    
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
+                        if (status_ == "200") 
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<Image>(response_, headers_).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<Asset>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
-                        if (status_ == "401")
+                        if (status_ == "401") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
-                        if (status_ == "403")
+                        if (status_ == "403") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-
-                        return default(Image);
+            
+                        return default(Asset);
                     }
                     finally
                     {
@@ -834,7 +990,204 @@ namespace Pavilot.Api.Client
             {
             }
         }
+    
+        /// <summary>Fonts</summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="animationId">Animation Id</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Asset>> V1ProjectsAnimationsFontsGetAsync(string projectId, string animationId)
+        {
+            return V1ProjectsAnimationsFontsGetAsync(projectId, animationId, System.Threading.CancellationToken.None);
+        }
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Fonts</summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="animationId">Animation Id</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Asset>> V1ProjectsAnimationsFontsGetAsync(string projectId, string animationId, System.Threading.CancellationToken cancellationToken)
+        {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
+            if (animationId == null)
+                throw new System.ArgumentNullException("animationId");
+    
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/animations/{animationId}/fonts");
+            urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Replace("{animationId}", System.Uri.EscapeDataString(ConvertToString(animationId, System.Globalization.CultureInfo.InvariantCulture)));
+    
+            var client_ = _httpClient;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200") 
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IEnumerable<Asset>>(response_, headers_).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == "401") 
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == "403") 
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ != "200" && status_ != "204")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                        }
+            
+                        return default(System.Collections.Generic.IEnumerable<Asset>);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+            }
+        }
+    
+        /// <summary>Font</summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="animationId">Animation Id</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<Asset> V1ProjectsAnimationsFontsPostAsync(string projectId, string animationId, System.IO.FileStream file)
+        {
+            return V1ProjectsAnimationsFontsPostAsync(projectId, animationId, file, System.Threading.CancellationToken.None);
+        }
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Font</summary>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="animationId">Animation Id</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<Asset> V1ProjectsAnimationsFontsPostAsync(string projectId, string animationId, System.IO.FileStream file, System.Threading.CancellationToken cancellationToken)
+        {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
+            if (animationId == null)
+                throw new System.ArgumentNullException("animationId");
+    
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/animations/{animationId}/fonts");
+            urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Replace("{animationId}", System.Uri.EscapeDataString(ConvertToString(animationId, System.Globalization.CultureInfo.InvariantCulture)));
+    
+            var client_ = _httpClient;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var boundary_ = System.Guid.NewGuid().ToString();
+                    var content_ = new System.Net.Http.MultipartFormDataContent(boundary_);
+                    content_.Headers.Remove("Content-Type");
+                    content_.Headers.TryAddWithoutValidation("Content-Type", "multipart/form-data; boundary=" + boundary_);
+                    if (file != null)
+                    {
+                        var content_file_ = new System.Net.Http.StreamContent(file);
+                        content_.Add(content_file_, "file", Path.GetFileName(file.Name) ?? "file");
+                    }
 
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200") 
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<Asset>(response_, headers_).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == "401") 
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == "403") 
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ != "200" && status_ != "204")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                        }
+            
+                        return default(Asset);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+            }
+        }
+    
         /// <summary>List</summary>
         /// <param name="projectId">Project Id</param>
         /// <returns>Success</returns>
@@ -843,7 +1196,7 @@ namespace Pavilot.Api.Client
         {
             return V1ProjectsHooksGetAsync(projectId, System.Threading.CancellationToken.None);
         }
-
+    
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>List</summary>
         /// <param name="projectId">Project Id</param>
@@ -851,10 +1204,13 @@ namespace Pavilot.Api.Client
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<Hook>> V1ProjectsHooksGetAsync(string projectId, System.Threading.CancellationToken cancellationToken)
         {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/hooks");
             urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
-
+    
             var client_ = _httpClient;
             try
             {
@@ -862,12 +1218,12 @@ namespace Pavilot.Api.Client
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+    
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
                     request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
                     PrepareRequest(client_, request_, url_);
-
+    
                     var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
@@ -877,34 +1233,34 @@ namespace Pavilot.Api.Client
                             foreach (var item_ in response_.Content.Headers)
                                 headers_[item_.Key] = item_.Value;
                         }
-
+    
                         ProcessResponse(client_, response_);
-
+    
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
+                        if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IEnumerable<Hook>>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
-                        if (status_ == "401")
+                        if (status_ == "401") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
-                        if (status_ == "403")
+                        if (status_ == "403") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-
+            
                         return default(System.Collections.Generic.IEnumerable<Hook>);
                     }
                     finally
@@ -918,7 +1274,7 @@ namespace Pavilot.Api.Client
             {
             }
         }
-
+    
         /// <summary>Add</summary>
         /// <param name="projectId">Project Id</param>
         /// <returns>Success</returns>
@@ -927,7 +1283,7 @@ namespace Pavilot.Api.Client
         {
             return V1ProjectsHooksPostAsync(projectId, body, System.Threading.CancellationToken.None);
         }
-
+    
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Add</summary>
         /// <param name="projectId">Project Id</param>
@@ -935,10 +1291,13 @@ namespace Pavilot.Api.Client
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<Hook> V1ProjectsHooksPostAsync(string projectId, HookRequest body, System.Threading.CancellationToken cancellationToken)
         {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/hooks");
             urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
-
+    
             var client_ = _httpClient;
             try
             {
@@ -949,12 +1308,12 @@ namespace Pavilot.Api.Client
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+    
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
                     request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
                     PrepareRequest(client_, request_, url_);
-
+    
                     var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
@@ -964,34 +1323,34 @@ namespace Pavilot.Api.Client
                             foreach (var item_ in response_.Content.Headers)
                                 headers_[item_.Key] = item_.Value;
                         }
-
+    
                         ProcessResponse(client_, response_);
-
+    
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
+                        if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Hook>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
-                        if (status_ == "401")
+                        if (status_ == "401") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
-                        if (status_ == "403")
+                        if (status_ == "403") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-
+            
                         return default(Hook);
                     }
                     finally
@@ -1005,7 +1364,7 @@ namespace Pavilot.Api.Client
             {
             }
         }
-
+    
         /// <summary>Get</summary>
         /// <param name="projectId">Project Id</param>
         /// <param name="hookId">Hook Id</param>
@@ -1015,7 +1374,7 @@ namespace Pavilot.Api.Client
         {
             return V1ProjectsHooksGetAsync(projectId, hookId, System.Threading.CancellationToken.None);
         }
-
+    
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get</summary>
         /// <param name="projectId">Project Id</param>
@@ -1024,14 +1383,17 @@ namespace Pavilot.Api.Client
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<Hook> V1ProjectsHooksGetAsync(string projectId, int hookId, System.Threading.CancellationToken cancellationToken)
         {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
             if (hookId == null)
                 throw new System.ArgumentNullException("hookId");
-
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/hooks/{hookId}");
             urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
             urlBuilder_.Replace("{hookId}", System.Uri.EscapeDataString(ConvertToString(hookId, System.Globalization.CultureInfo.InvariantCulture)));
-
+    
             var client_ = _httpClient;
             try
             {
@@ -1039,12 +1401,12 @@ namespace Pavilot.Api.Client
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+    
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
                     request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
                     PrepareRequest(client_, request_, url_);
-
+    
                     var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
@@ -1054,34 +1416,34 @@ namespace Pavilot.Api.Client
                             foreach (var item_ in response_.Content.Headers)
                                 headers_[item_.Key] = item_.Value;
                         }
-
+    
                         ProcessResponse(client_, response_);
-
+    
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
+                        if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Hook>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
-                        if (status_ == "401")
+                        if (status_ == "401") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
-                        if (status_ == "403")
+                        if (status_ == "403") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-
+            
                         return default(Hook);
                     }
                     finally
@@ -1095,7 +1457,7 @@ namespace Pavilot.Api.Client
             {
             }
         }
-
+    
         /// <summary>Delete</summary>
         /// <param name="projectId">Project Id</param>
         /// <param name="hookId">Hook Id</param>
@@ -1105,7 +1467,7 @@ namespace Pavilot.Api.Client
         {
             return V1ProjectsHooksDeleteAsync(projectId, hookId, System.Threading.CancellationToken.None);
         }
-
+    
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Delete</summary>
         /// <param name="projectId">Project Id</param>
@@ -1114,14 +1476,17 @@ namespace Pavilot.Api.Client
         /// <exception cref="ApiException">A server side error occurred.</exception>
         public async System.Threading.Tasks.Task<Hook> V1ProjectsHooksDeleteAsync(string projectId, int hookId, System.Threading.CancellationToken cancellationToken)
         {
+            if (projectId == null)
+                throw new System.ArgumentNullException("projectId");
+    
             if (hookId == null)
                 throw new System.ArgumentNullException("hookId");
-
+    
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/{projectId}/hooks/{hookId}");
             urlBuilder_.Replace("{projectId}", System.Uri.EscapeDataString(ConvertToString(projectId, System.Globalization.CultureInfo.InvariantCulture)));
             urlBuilder_.Replace("{hookId}", System.Uri.EscapeDataString(ConvertToString(hookId, System.Globalization.CultureInfo.InvariantCulture)));
-
+    
             var client_ = _httpClient;
             try
             {
@@ -1129,12 +1494,12 @@ namespace Pavilot.Api.Client
                 {
                     request_.Method = new System.Net.Http.HttpMethod("DELETE");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
+    
                     PrepareRequest(client_, request_, urlBuilder_);
                     var url_ = urlBuilder_.ToString();
                     request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
                     PrepareRequest(client_, request_, url_);
-
+    
                     var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
                     try
                     {
@@ -1144,34 +1509,34 @@ namespace Pavilot.Api.Client
                             foreach (var item_ in response_.Content.Headers)
                                 headers_[item_.Key] = item_.Value;
                         }
-
+    
                         ProcessResponse(client_, response_);
-
+    
                         var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
+                        if (status_ == "200") 
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<Hook>(response_, headers_).ConfigureAwait(false);
                             return objectResponse_.Object;
                         }
                         else
-                        if (status_ == "401")
+                        if (status_ == "401") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
-                        if (status_ == "403")
+                        if (status_ == "403") 
                         {
-                            string responseText_ = (response_.Content == null) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
                             throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-
+            
                         return default(Hook);
                     }
                     finally
@@ -1185,7 +1550,88 @@ namespace Pavilot.Api.Client
             {
             }
         }
-
+    
+        /// <summary>Sample hooks</summary>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<HookMessage>> V1ProjectsSampleHooksAsync()
+        {
+            return V1ProjectsSampleHooksAsync(System.Threading.CancellationToken.None);
+        }
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Sample hooks</summary>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public async System.Threading.Tasks.Task<System.Collections.Generic.IEnumerable<HookMessage>> V1ProjectsSampleHooksAsync(System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/v1/projects/sample/hooks");
+    
+            var client_ = _httpClient;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+    
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+    
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+    
+                        ProcessResponse(client_, response_);
+    
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200") 
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.IEnumerable<HookMessage>>(response_, headers_).ConfigureAwait(false);
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == "401") 
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Unauthorized", (int)response_.StatusCode, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ == "403") 
+                        {
+                            string responseText_ = ( response_.Content == null ) ? string.Empty : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("Forbidden", (int)response_.StatusCode, responseText_, headers_, null);
+                        }
+                        else
+                        if (status_ != "200" && status_ != "204")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false); 
+                            throw new ApiException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                        }
+            
+                        return default(System.Collections.Generic.IEnumerable<HookMessage>);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+            }
+        }
+    
         protected struct ObjectResponseResult<T>
         {
             public ObjectResponseResult(T responseObject, string responseText)
@@ -1193,21 +1639,21 @@ namespace Pavilot.Api.Client
                 this.Object = responseObject;
                 this.Text = responseText;
             }
-
+    
             public T Object { get; }
-
+    
             public string Text { get; }
         }
-
+    
         public bool ReadResponseAsString { get; set; }
-
+        
         protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers)
         {
             if (response == null || response.Content == null)
             {
                 return new ObjectResponseResult<T>(default(T), string.Empty);
             }
-
+        
             if (ReadResponseAsString)
             {
                 var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -1242,7 +1688,7 @@ namespace Pavilot.Api.Client
                 }
             }
         }
-
+    
         private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
         {
             if (value is System.Enum)
@@ -1253,316 +1699,320 @@ namespace Pavilot.Api.Client
                     var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
                     if (field != null)
                     {
-                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute)) 
                             as System.Runtime.Serialization.EnumMemberAttribute;
                         if (attribute != null)
                         {
                             return attribute.Value != null ? attribute.Value : name;
                         }
                     }
-
+        
                     return System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
                 }
             }
-            else if (value is bool)
+            else if (value is bool) 
             {
                 return System.Convert.ToString(value, cultureInfo).ToLowerInvariant();
             }
             else if (value is byte[])
             {
-                return System.Convert.ToBase64String((byte[])value);
+                return System.Convert.ToBase64String((byte[]) value);
             }
             else if (value != null && value.GetType().IsArray)
             {
-                var array = System.Linq.Enumerable.OfType<object>((System.Array)value);
+                var array = System.Linq.Enumerable.OfType<object>((System.Array) value);
                 return string.Join(",", System.Linq.Enumerable.Select(array, o => ConvertToString(o, cultureInfo)));
             }
-
+        
             return System.Convert.ToString(value, cultureInfo);
         }
     }
 
-    /// <summary>New video export request</summary>
+    /// <summary>Animation</summary>
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class ExportRequest
+    public partial class Animation 
     {
-        /// <summary>Display name</summary>
+        /// <summary>Animation Id</summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Id { get; set; }
+    
+        /// <summary>Project Id</summary>
+        [Newtonsoft.Json.JsonProperty("projectId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ProjectId { get; set; }
+    
+        /// <summary>Created Date</summary>
+        [Newtonsoft.Json.JsonProperty("createDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset CreateDate { get; set; }
+    
+        /// <summary>Name</summary>
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Name { get; set; }
-
-        /// <summary>Default message for hooks or distributions</summary>
+    
+        /// <summary>Duration (in seconds)</summary>
+        [Newtonsoft.Json.JsonProperty("duration", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public double Duration { get; set; }
+    
+        /// <summary>Tags</summary>
+        [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string> Tags { get; set; }
+    
+    
+    }
+    
+    /// <summary>Saved Asset</summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class Asset 
+    {
+        /// <summary>Filename</summary>
+        [Newtonsoft.Json.JsonProperty("filename", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Filename { get; set; }
+    
+        /// <summary>Filepath</summary>
+        [Newtonsoft.Json.JsonProperty("filepath", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Filepath { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class ConnectionsStatus 
+    {
+        /// <summary>Is Twitter connected</summary>
+        [Newtonsoft.Json.JsonProperty("twitter", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool Twitter { get; set; }
+    
+        /// <summary>Is Facebook connected</summary>
+        [Newtonsoft.Json.JsonProperty("facebook", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool Facebook { get; set; }
+    
+        /// <summary>Any hooks connected</summary>
+        [Newtonsoft.Json.JsonProperty("hooks", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool Hooks { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class ExportRequest 
+    {
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Name { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Message { get; set; }
-
-        /// <summary>Key-Value mappings to update animation. Eg; 
-        /// &lt;example&gt;{"Type": "Round", "Color": "Blue"}&lt;/example&gt;</summary>
+    
+        [Newtonsoft.Json.JsonProperty("thumbnailFrame", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int ThumbnailFrame { get; set; }
+    
         [Newtonsoft.Json.JsonProperty("mappings", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.IDictionary<string, string> Mappings { get; set; }
-
-        /// <summary>Distribution list, hooks not included.
-        /// Key: Platform;
-        /// Value: Message to share</summary>
+    
         [Newtonsoft.Json.JsonProperty("distributions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public Distributions Distributions { get; set; }
-
-
+    
+    
     }
-
+    
+    /// <summary>Hook</summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class Hook 
+    {
+        /// <summary>Hook Id</summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Id { get; set; }
+    
+        /// <summary>Project Id</summary>
+        [Newtonsoft.Json.JsonProperty("projectId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ProjectId { get; set; }
+    
+        /// <summary>Trigger paused state</summary>
+        [Newtonsoft.Json.JsonProperty("isPaused", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool IsPaused { get; set; }
+    
+        /// <summary>Hook subscription URL</summary>
+        [Newtonsoft.Json.JsonProperty("url", Required = Newtonsoft.Json.Required.Always)]
+        public System.Uri Url { get; set; }
+    
+        /// <summary>Source for hook request</summary>
+        [Newtonsoft.Json.JsonProperty("source", Required = Newtonsoft.Json.Required.Always)]
+        public string Source { get; set; }
+    
+        /// <summary>Trigger hook on animation events</summary>
+        [Newtonsoft.Json.JsonProperty("animationEvents", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool AnimationEvents { get; set; }
+    
+        /// <summary>Apply only specified animations (comma-separated list)</summary>
+        [Newtonsoft.Json.JsonProperty("animationFilter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string AnimationFilter { get; set; }
+    
+        /// <summary>Trigger hook on video events</summary>
+        [Newtonsoft.Json.JsonProperty("videoEvents", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool VideoEvents { get; set; }
+    
+        /// <summary>Apply only on specified video statuses (comma-separated list)</summary>
+        [Newtonsoft.Json.JsonProperty("videoStatusFilter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string VideoStatusFilter { get; set; }
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class HookMessage 
+    {
+        [Newtonsoft.Json.JsonProperty("hookId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int HookId { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("projectId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ProjectId { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("animationId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string AnimationId { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("videoId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string VideoId { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Type { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Status { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("animation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Animation { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<string> Tags { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("video", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Video { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Message { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("path", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Path { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("thumbnail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Thumbnail { get; set; }
+    
+    
+    }
+    
+    /// <summary>Hook request</summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class HookRequest 
+    {
+        /// <summary>Hook subscription URL</summary>
+        [Newtonsoft.Json.JsonProperty("url", Required = Newtonsoft.Json.Required.Always)]
+        public System.Uri Url { get; set; }
+    
+        /// <summary>Source for hook request</summary>
+        [Newtonsoft.Json.JsonProperty("source", Required = Newtonsoft.Json.Required.Always)]
+        public string Source { get; set; }
+    
+        /// <summary>Trigger hook on animation events</summary>
+        [Newtonsoft.Json.JsonProperty("animationEvents", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool AnimationEvents { get; set; }
+    
+        /// <summary>Apply only specified animations (comma-separated list)</summary>
+        [Newtonsoft.Json.JsonProperty("animationFilter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string AnimationFilter { get; set; }
+    
+        /// <summary>Trigger hook on video events</summary>
+        [Newtonsoft.Json.JsonProperty("videoEvents", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool VideoEvents { get; set; }
+    
+        /// <summary>Apply only on specified video statuses (comma-separated list)</summary>
+        [Newtonsoft.Json.JsonProperty("videoStatusFilter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string VideoStatusFilter { get; set; }
+    
+    
+    }
+    
+    /// <summary>Project</summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class Project 
+    {
+        /// <summary>Project Id</summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Id { get; set; }
+    
+        /// <summary>Created Date</summary>
+        [Newtonsoft.Json.JsonProperty("createDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset CreateDate { get; set; }
+    
+        /// <summary>Name</summary>
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Name { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("connectionsStatus", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public ConnectionsStatus ConnectionsStatus { get; set; }
+    
+    
+    }
+    
+    /// <summary>Video</summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class Video 
+    {
+        /// <summary>Video Id</summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Id { get; set; }
+    
+        /// <summary>Animation Id</summary>
+        [Newtonsoft.Json.JsonProperty("animationId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string AnimationId { get; set; }
+    
+        /// <summary>Created Date</summary>
+        [Newtonsoft.Json.JsonProperty("createDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset CreateDate { get; set; }
+    
+        /// <summary>Name</summary>
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Name { get; set; }
+    
+        /// <summary>Output Path</summary>
+        [Newtonsoft.Json.JsonProperty("output", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Output { get; set; }
+    
+        /// <summary>Thumbnail path</summary>
+        [Newtonsoft.Json.JsonProperty("thumbnail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Thumbnail { get; set; }
+    
+        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public VideoStatus Status { get; set; }
+    
+    
+    }
+    
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
     public enum VideoStatus
     {
         [System.Runtime.Serialization.EnumMember(Value = @"Queued")]
         Queued = 0,
-
+    
         [System.Runtime.Serialization.EnumMember(Value = @"InProgress")]
         InProgress = 1,
-
+    
         [System.Runtime.Serialization.EnumMember(Value = @"Ready")]
         Ready = 2,
-
+    
         [System.Runtime.Serialization.EnumMember(Value = @"Failed")]
         Failed = 3,
-
+    
     }
-
-    /// <summary>Video</summary>
+    
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Video
-    {
-        /// <summary>Video Id</summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
-
-        /// <summary>Animation Id</summary>
-        [Newtonsoft.Json.JsonProperty("animationId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string AnimationId { get; set; }
-
-        /// <summary>Created Date</summary>
-        [Newtonsoft.Json.JsonProperty("createDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset CreateDate { get; set; }
-
-        /// <summary>Name</summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
-
-        /// <summary>Output Path</summary>
-        [Newtonsoft.Json.JsonProperty("output", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Output { get; set; }
-
-        /// <summary>Thumbnail path</summary>
-        [Newtonsoft.Json.JsonProperty("thumbnail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Thumbnail { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public VideoStatus Status { get; set; }
-
-
-    }
-
-    /// <summary>Saved Image</summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Image
-    {
-        /// <summary>Filename</summary>
-        [Newtonsoft.Json.JsonProperty("filename", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Filename { get; set; }
-
-        /// <summary>Filepath</summary>
-        [Newtonsoft.Json.JsonProperty("filepath", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Filepath { get; set; }
-
-
-    }
-
-    /// <summary>Hook</summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Hook
-    {
-        /// <summary>Hook Id</summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int Id { get; set; }
-
-        /// <summary>Project Id</summary>
-        [Newtonsoft.Json.JsonProperty("projectId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ProjectId { get; set; }
-
-        /// <summary>Trigger paused state</summary>
-        [Newtonsoft.Json.JsonProperty("isPaused", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool IsPaused { get; set; }
-
-        /// <summary>Hook subscription URL</summary>
-        [Newtonsoft.Json.JsonProperty("url", Required = Newtonsoft.Json.Required.Always)]
-        public System.Uri Url { get; set; }
-
-        /// <summary>Source for hook request</summary>
-        [Newtonsoft.Json.JsonProperty("source", Required = Newtonsoft.Json.Required.Always)]
-        public string Source { get; set; }
-
-        /// <summary>Trigger hook on animation events</summary>
-        [Newtonsoft.Json.JsonProperty("animationEvents", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool AnimationEvents { get; set; }
-
-        /// <summary>Apply only specified animations (comma-separated list)</summary>
-        [Newtonsoft.Json.JsonProperty("animationFilter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string AnimationFilter { get; set; }
-
-        /// <summary>Trigger hook on video events</summary>
-        [Newtonsoft.Json.JsonProperty("videoEvents", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool VideoEvents { get; set; }
-
-        /// <summary>Apply only on specified video statuses (comma-separated list)</summary>
-        [Newtonsoft.Json.JsonProperty("videoStatusFilter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string VideoStatusFilter { get; set; }
-
-
-    }
-
-    /// <summary>Hook request</summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class HookRequest
-    {
-        /// <summary>Hook subscription URL</summary>
-        [Newtonsoft.Json.JsonProperty("url", Required = Newtonsoft.Json.Required.Always)]
-        public System.Uri Url { get; set; }
-
-        /// <summary>Source for hook request</summary>
-        [Newtonsoft.Json.JsonProperty("source", Required = Newtonsoft.Json.Required.Always)]
-        public string Source { get; set; }
-
-        /// <summary>Trigger hook on animation events</summary>
-        [Newtonsoft.Json.JsonProperty("animationEvents", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool AnimationEvents { get; set; }
-
-        /// <summary>Apply only specified animations (comma-separated list)</summary>
-        [Newtonsoft.Json.JsonProperty("animationFilter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string AnimationFilter { get; set; }
-
-        /// <summary>Trigger hook on video events</summary>
-        [Newtonsoft.Json.JsonProperty("videoEvents", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool VideoEvents { get; set; }
-
-        /// <summary>Apply only on specified video statuses (comma-separated list)</summary>
-        [Newtonsoft.Json.JsonProperty("videoStatusFilter", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string VideoStatusFilter { get; set; }
-
-
-    }
-
-    /// <summary>Project</summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Project
-    {
-        /// <summary>Project Id</summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
-
-        /// <summary>Created Date</summary>
-        [Newtonsoft.Json.JsonProperty("createDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset CreateDate { get; set; }
-
-        /// <summary>Name</summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
-
-        /// <summary>Is Twitter connected</summary>
-        [Newtonsoft.Json.JsonProperty("hasTwitter", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool HasTwitter { get; set; }
-
-        /// <summary>Is Facebook connected</summary>
-        [Newtonsoft.Json.JsonProperty("hasFacebook", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool HasFacebook { get; set; }
-
-        /// <summary>Any hooks connected</summary>
-        [Newtonsoft.Json.JsonProperty("hasHooks", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public bool HasHooks { get; set; }
-
-
-    }
-
-    /// <summary>Animation</summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Animation
-    {
-        /// <summary>Animation Id</summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id { get; set; }
-
-        /// <summary>Project Id</summary>
-        [Newtonsoft.Json.JsonProperty("projectId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ProjectId { get; set; }
-
-        /// <summary>Created Date</summary>
-        [Newtonsoft.Json.JsonProperty("createDate", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset CreateDate { get; set; }
-
-        /// <summary>Name</summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name { get; set; }
-
-        /// <summary>Duration (in seconds)</summary>
-        [Newtonsoft.Json.JsonProperty("duration", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public double Duration { get; set; }
-
-        /// <summary>Tags</summary>
-        [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Tags { get; set; }
-
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class HookMessage
-    {
-        [Newtonsoft.Json.JsonProperty("hookId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int HookId { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("projectId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ProjectId { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("animationId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string AnimationId { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("videoId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string VideoId { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Type { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Status { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("animation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Animation { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("tags", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.Generic.ICollection<string> Tags { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("video", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Video { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Message { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("path", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Path { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("thumbnail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Thumbnail { get; set; }
-
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.1.15.0 (Newtonsoft.Json v12.0.0.0)")]
-    public partial class Distributions
+    public partial class Distributions 
     {
         [Newtonsoft.Json.JsonProperty("Twitter", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Twitter { get; set; }
-
+    
         [Newtonsoft.Json.JsonProperty("Facebook", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string Facebook { get; set; }
-
-
+    
+    
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.5.0.0 (NJsonSchema v10.1.15.0 (Newtonsoft.Json v12.0.0.0))")]
@@ -1574,11 +2024,11 @@ namespace Pavilot.Api.Client
 
         public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
 
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException)
+        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException) 
             : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + response.Substring(0, response.Length >= 512 ? 512 : response.Length), innerException)
         {
             StatusCode = statusCode;
-            Response = response;
+            Response = response; 
             Headers = headers;
         }
 
@@ -1593,7 +2043,7 @@ namespace Pavilot.Api.Client
     {
         public TResult Result { get; private set; }
 
-        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException)
+        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException) 
             : base(message, statusCode, response, headers, innerException)
         {
             Result = result;
@@ -1604,6 +2054,6 @@ namespace Pavilot.Api.Client
 
 #pragma warning restore 1591
 #pragma warning restore 1573
-#pragma warning restore 472
-#pragma warning restore 114
-#pragma warning restore 108
+#pragma warning restore  472
+#pragma warning restore  114
+#pragma warning restore  108

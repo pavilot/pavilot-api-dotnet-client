@@ -5,13 +5,12 @@
     <Company>dissperltd</Company>
     <Product>Pavilot</Product>
     <Description>Pavilot API .Net Client</Description>
-    <PackageIcon>logo.png</PackageIcon>
+    <PackageIcon>pavilot-logo.png</PackageIcon>
     <RepositoryUrl>https://github.com/pavilot/pavilot-api-dotnet-client</RepositoryUrl>
     <PackageProjectUrl>https://pavilot.com</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>pavilot</PackageTags>
-    <PackageReleaseNotes>Documention updates
-</PackageReleaseNotes>
+    <PackageReleaseNotes>Font support</PackageReleaseNotes>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Version>1.2.1</Version>
   </PropertyGroup>
@@ -28,7 +27,7 @@
     <WCFMetadata Include="Connected Services" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\global\logo.png">
+    <None Include="..\global\pavilot-logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
