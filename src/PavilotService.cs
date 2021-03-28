@@ -75,6 +75,23 @@ namespace Pavilot.Api.Client
         Task<Video> ExportAsync(string projectId, string animationId, ExportRequest request);
 
         /// <summary>
+        /// Get audios of the animation
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="animationId"></param>
+        /// <returns>Asset info with filename and filepath for mapping</returns>
+        Task<IEnumerable<Asset>> GetAudios(string projectId, string animationId);
+
+        /// <summary>
+        /// Upload new audio for the animation
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="animationId"></param>
+        /// <param name="file">File stream</param>
+        /// <returns>Asset info with filename for mapping</returns>
+        Task<Asset> PostAudio(string projectId, string animationId, FileStream file);
+
+        /// <summary>
         /// Get images of the animation
         /// </summary>
         /// <param name="projectId"></param>
@@ -277,6 +294,32 @@ namespace Pavilot.Api.Client
             VerifyAndSetupClient();
             return PavilotClient.V1ProjectsAnimationsVideosPostAsync(projectId, animationId, request);
         }
+
+        /// <summary>
+        /// Get audios of the animation
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="animationId"></param>
+        /// <returns>Asset info with filename and filepath for mapping</returns>
+        public Task<IEnumerable<Asset>> GetAudios(string projectId, string animationId)
+        {
+            VerifyAndSetupClient();
+            return PavilotClient.V1ProjectsAnimationsAudiosGetAsync(projectId, animationId);
+        }
+
+        /// <summary>
+        /// Upload new audio for the animation
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="animationId"></param>
+        /// <param name="file">File stream</param>
+        /// <returns>Asset info with filename for mapping</returns>
+        public Task<Asset> PostAudio(string projectId, string animationId, FileStream file)
+        {
+            VerifyAndSetupClient();
+            return PavilotClient.V1ProjectsAnimationsAudiosPostAsync(projectId, animationId, file);
+        }
+
 
         /// <summary>
         /// Get images of the animation

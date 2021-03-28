@@ -122,6 +122,36 @@
             <returns>Success</returns>
             <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
         </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsAudiosGetAsync(System.String,System.String)">
+            <summary>Audios</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsAudiosGetAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Audios</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsAudiosPostAsync(System.String,System.String,System.IO.FileStream)">
+            <summary>Audio</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsAudiosPostAsync(System.String,System.String,System.IO.FileStream,System.Threading.CancellationToken)">
+            <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+            <summary>Audio</summary>
+            <param name="projectId">Project Id</param>
+            <param name="animationId">Animation Id</param>
+            <returns>Success</returns>
+            <exception cref="T:Pavilot.Api.Client.ApiException">A server side error occurred.</exception>
+        </member>
         <member name="M:Pavilot.Api.Client.PavilotClient.V1ProjectsAnimationsImagesGetAsync(System.String,System.String)">
             <summary>Images</summary>
             <param name="projectId">Project Id</param>
@@ -439,6 +469,23 @@
             <param name="animationId">Animation Id</param>
             <param name="request">Mappings and distribution details</param>
         </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.GetAudios(System.String,System.String)">
+            <summary>
+            Get audios of the animation
+            </summary>
+            <param name="projectId"></param>
+            <param name="animationId"></param>
+            <returns>Asset info with filename and filepath for mapping</returns>
+        </member>
+        <member name="M:Pavilot.Api.Client.IPavilotService.PostAudio(System.String,System.String,System.IO.FileStream)">
+            <summary>
+            Upload new audio for the animation
+            </summary>
+            <param name="projectId"></param>
+            <param name="animationId"></param>
+            <param name="file">File stream</param>
+            <returns>Asset info with filename for mapping</returns>
+        </member>
         <member name="M:Pavilot.Api.Client.IPavilotService.GetImages(System.String,System.String)">
             <summary>
             Get images of the animation
@@ -564,6 +611,23 @@
             <param name="projectId">Project Id</param>
             <param name="animationId">Animation Id</param>
             <param name="request">Mappings and distribution details</param>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.GetAudios(System.String,System.String)">
+            <summary>
+            Get audios of the animation
+            </summary>
+            <param name="projectId"></param>
+            <param name="animationId"></param>
+            <returns>Asset info with filename and filepath for mapping</returns>
+        </member>
+        <member name="M:Pavilot.Api.Client.PavilotService.PostAudio(System.String,System.String,System.IO.FileStream)">
+            <summary>
+            Upload new audio for the animation
+            </summary>
+            <param name="projectId"></param>
+            <param name="animationId"></param>
+            <param name="file">File stream</param>
+            <returns>Asset info with filename for mapping</returns>
         </member>
         <member name="M:Pavilot.Api.Client.PavilotService.GetImages(System.String,System.String)">
             <summary>

@@ -10,9 +10,9 @@
     <PackageProjectUrl>https://pavilot.com</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>pavilot</PackageTags>
-    <PackageReleaseNotes>Font support</PackageReleaseNotes>
+    <PackageReleaseNotes>Audio support</PackageReleaseNotes>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.2.1</Version>
+    <Version>1.2.2</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <DocumentationFile>C:\Users\UsameEsendir\Source\Repos\Dissper\Pavilot\pavilot-api-dotnet-client\src\Pavilot.Api.Client.xml</DocumentationFile>
